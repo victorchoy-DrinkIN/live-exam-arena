@@ -1,0 +1,1 @@
+ALTER TABLE `exam_questions` ADD `points` int DEFAULT 5 NOT NULL;

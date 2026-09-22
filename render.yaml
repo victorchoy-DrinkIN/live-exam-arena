@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: live-exam-arena
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: pnpm install --frozen-lockfile && pnpm build
+    startCommand: pnpm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: VITE_APP_ID
+        sync: false
+      - key: OAUTH_SERVER_URL
+        value: https://api.manus.im
+      - key: OWNER_OPEN_ID
+        sync: false
+      - key: OWNER_NAME
+        sync: false
+      - key: EXPO_PUBLIC_OAUTH_PORTAL_URL
+        value: https://auth.manus.im
+      - key: EXPO_PUBLIC_OAUTH_SERVER_URL
+        value: https://api.manus.im
+      - key: EXPO_PUBLIC_APP_ID
+        sync: false
+      - key: EXPO_PUBLIC_OWNER_OPEN_ID
+        sync: false
+      - key: EXPO_PUBLIC_OWNER_NAME
+        sync: false
